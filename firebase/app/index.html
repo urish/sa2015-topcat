@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Top Cat</title>
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="topcat.css">
+	</head>
+	<body ng-app="topcat.app">
+
+		<div ng-controller="MainCtrl as vm">
+			<div class="topcat-box" ng-repeat="cat in vm.cats|orderBy:'-votes'">
+				<img class="topcat-image" ng-src="{{cat.photo}}" title="{{cat.title}}"/>
+				<div>
+					<a ng-click="vm.likeCat(cat)" href="">
+						<i class="fa fa-thumbs-up"></i>
+					</a>
+					<a ng-click="vm.unlikeCat(cat)" href="">
+						<i class="fa fa-thumbs-down"></i>
+					</a>
+					<i class="fa fa-heart"></i>{{cat.votes}}
+				</div>
+			</div>
+		</div>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+		<script src="https://cdn.firebase.com/js/client/2.3.0/firebase.js"></script>
+		<script src="https://cdn.firebase.com/libs/angularfire/1.1.2/angularfire.min.js"></script>
+		<script src="app.js"></script>
+	</body>
+</html>
