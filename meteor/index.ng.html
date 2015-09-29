@@ -1,5 +1,4 @@
 <div ng-controller="MainCtrl as vm">
-	miew
 	<div class="topcat-box" ng-repeat="cat in vm.cats|orderBy:'-votes'">
 		<img class="topcat-image" ng-src="{{cat.photo}}" title="{{cat.title}}"/>
 
