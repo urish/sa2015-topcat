@@ -1,0 +1,12 @@
+.topcat-box {
+	display: inline-block;
+	height: 250px;
+	text-align: center;
+	margin: 8px;
+	vertical-align: baseline;
+}
+
+img {
+	border-radius: 4px;
+	box-shadow: 2px 2px 2px gray;
+}

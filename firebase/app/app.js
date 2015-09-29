@@ -1,5 +1,5 @@
 angular.module('topcat.app', ['firebase'])
-	.controller('MainCtrl', function ($scope, Firebase, $firebaseArray) {
+	.controller('MainCtrl', function (Firebase, $firebaseArray) {
 		var vm = this;
 
 		var fbRef = new Firebase('https://topcat.firebaseio.com/cats').orderByChild('votes');
