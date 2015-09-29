@@ -19,9 +19,24 @@ function onConnected(conn) {
 	app.get('/api/cats', function (req, res) {
 		table.coerceTo('array').run(conn).then(result => res.json(result));
 	});
+
 	app.post('/api/cats/:id', function (req, res) {
 		table.filter({'id': req.params.id}).update({votes: req.body.votes}).run(conn)
 			.then(result => res.send('OK'));
+	});
+
+	io.on('connection', function (socket) {
+		console.log('User connected:', socket.handshake.address);
+
+		table.changes().run(conn).then(cursor => {
+			cursor.each((err, change) => {
+				socket.emit('change', change);
+			});
+		});
+
+		socket.on('disconnect', function () {
+			console.log('User disconnected:', socket.handshake.address);
+		});
 	});
 }
 

@@ -6,6 +6,8 @@
  *
  * 		r.db('topcat').tableCreate('cats')
  *
+ * 		r.db('topcat').table('cats').indexCreate('votes')
+ *
  */
 
 var DBHOST = process.env.TOPCAT_RETHINKDB || '192.168.99.100';
