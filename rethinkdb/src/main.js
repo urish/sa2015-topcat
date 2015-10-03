@@ -28,6 +28,8 @@ function onConnected(conn) {
 	io.on('connection', function (socket) {
 		console.log('User connected:', socket.handshake.address);
 
+		table.coerceTo('array').run(conn).then(data => socket.emit('data', data));
+
 		table.changes().run(conn).then(cursor => {
 			cursor.each((err, change) => {
 				socket.emit('change', change);
