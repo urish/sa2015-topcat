@@ -1,0 +1,17 @@
+{
+  "name": "topcat-data",
+  "version": "1.0.0",
+  "description": "",
+  "main": "import-firebase.js",
+  "dependencies": {
+    "firebase": "^2.3.1",
+    "promised-mongo": "^1.2.0",
+    "rethinkdb": "^2.1.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Uri Shaked",
+  "license": "ISC"
+}
