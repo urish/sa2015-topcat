@@ -2,14 +2,16 @@
 	<div class="topcat-box" ng-repeat="cat in vm.cats|orderBy:'-votes'">
 		<img class="topcat-image" ng-src="{{cat.photo}}" title="{{cat.title}}"/>
 
-		<div>
+		<div class="topcat-rating-controls">
 			<a ng-click="vm.likeCat(cat)" href="">
 				<i class="fa fa-thumbs-up"></i>
 			</a>
 			<a ng-click="vm.unlikeCat(cat)" href="">
 				<i class="fa fa-thumbs-down"></i>
 			</a>
-			<i class="fa fa-heart"></i>{{cat.votes}}
+			<span class="topcat-votes">
+				<i class="fa fa-heart"></i>{{cat.votes}}
+			</span>
 		</div>
 	</div>
 </div>
