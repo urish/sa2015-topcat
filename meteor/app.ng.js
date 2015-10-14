@@ -1,10 +1,11 @@
 /* global Mongo, Meteor */
 
-var Cats = new Mongo.Collection('cats');
-
 if (Meteor.isClient) {
 	angular.module('topcat.app', ['angular-meteor'])
 		.controller('MainCtrl', function ($meteor) {
+
+			var Cats = Mongo.Collection.get('cats');
+
 			var vm = this;
 
 			vm.cats = $meteor.collection(Cats);
