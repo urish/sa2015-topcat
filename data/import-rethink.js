@@ -13,21 +13,13 @@
 var DBHOST = process.env.TOPCAT_RETHINKDB || '192.168.99.100';
 
 var r = require('rethinkdb');
-var fs = require('fs');
-
-var photos = JSON.parse(fs.readFileSync('cats.json')).photos.photo;
+var cats = require('./cats');
 
 function onConnected(conn) {
 	var table = r.db('topcat').table('cats');
-	return Promise.all(photos.map(function (photo) {
-		console.log('Insert', photo.id);
-		return table.insert({
-			id: photo.id,
-			photo: photo.url_s,
-			owner: photo.ownername,
-			title: photo.title,
-			votes: 0
-		}).run(conn);
+	return Promise.all(cats.getCatArray().map(function (cat) {
+		console.log('Insert', cat.id);
+		return table.insert(cat).run(conn);
 	}));
 }
 
