@@ -7,11 +7,11 @@ angular.module('topcat.app', ['firebase'])
 
 		this.likeCat = function (cat) {
 			cat.votes = cat.votes + 1;
-			vm.cats.$save();
+			vm.cats.$save(cat);
 		};
 
 		this.unlikeCat = function (cat) {
 			cat.votes = cat.votes - 1;
-			vm.cats.$save();
+			vm.cats.$save(cat);
 		};
 	});
